@@ -209,6 +209,7 @@ def register_view(request):
         with transaction.atomic():
             company = Company.objects.create(
                 name=business_name, 
+                business_type="Retail",
                 logo_base64=logo_base64,
                 address=address,
                 phone=phone

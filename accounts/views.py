@@ -192,7 +192,7 @@ def register_view(request):
     phone = request.data.get("phone")
     password = request.data.get("password")
     logo_base64 = request.data.get("logo_base64")
-    address = request.data.get("address")
+    currency_symbol = request.data.get("currency_symbol", "Rs")
 
     if not business_name or not owner_name or not email or not phone or not password or not address:
         return Response({"detail": "All fields are required (including address)."}, status=status.HTTP_400_BAD_REQUEST)
@@ -210,6 +210,7 @@ def register_view(request):
             company = Company.objects.create(
                 name=business_name, 
                 business_type="Retail",
+                currency_symbol=currency_symbol,
                 logo_base64=logo_base64,
                 address=address,
                 phone=phone

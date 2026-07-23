@@ -212,6 +212,7 @@ def register_view(request):
                 name=business_name, 
                 business_type="Retail",
                 currency_symbol=currency_symbol,
+                is_lifetime=False,
                 logo_base64=logo_base64,
                 address=address,
                 phone=phone
@@ -359,6 +360,7 @@ def logout_view(request):
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 def me_view(request):
     if not request.user.is_authenticated:
         return Response({"detail": "Not authenticated"}, status=401)

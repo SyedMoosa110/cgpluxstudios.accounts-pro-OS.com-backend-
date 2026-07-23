@@ -16,6 +16,7 @@ class Company(TimeStampedModel):
     business_type = models.CharField(max_length=100, default="Retail", null=True, blank=True)
     currency_symbol = models.CharField(max_length=10, default="Rs", null=True, blank=True)
     is_upgraded = models.BooleanField(default=False)
+    is_lifetime = models.BooleanField(default=False)
     logo_base64 = models.TextField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=50, null=True, blank=True)
